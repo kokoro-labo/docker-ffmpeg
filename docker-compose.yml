@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  ffmpeg:
+    build:
+        context: ./dockerfile
+        dockerfile: Dockerfile
+    container_name: ffmpeg
+    hostname: ffmpeg
+    image: ffmpeg/ubuntu:4.1
+    entrypoint: bash
+    environment:
+      - TZ=Asia/Tokyo
+    tty: true
+    volumes:
+      - ./data:/tmp/workdir
+    restart: unless-stopped
